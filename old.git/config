@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/TaxMax123/mup-sudoku-solver.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "heroku"]
+	url = https://git.heroku.com/young-temple-18944.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
+[gui]
+	wmstate = normal
+	geometry = 893x435+156+156 175 196

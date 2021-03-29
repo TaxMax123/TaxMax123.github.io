@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sudoku solver</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <center>
+            <div class="table-wrapper">
+                <div id="game" class="game">
+                    <table class="game-table">
+                        <tbody> 
+                            <tr class="table-row">
+                                <td id="A1" class="game-cell row-1 column-1 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A2" class="game-cell row-1 column-2 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A3" class="game-cell row-1 column-3 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A4" class="game-cell row-1 column-4 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A5" class="game-cell row-1 column-5 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A6" class="game-cell row-1 column-6 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A7" class="game-cell row-1 column-7 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A8" class="game-cell row-1 column-8 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="A9" class="game-cell row-1 column-9 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="B1" class="game-cell row-2 column-1 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B2" class="game-cell row-2 column-2 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B3" class="game-cell row-2 column-3 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B4" class="game-cell row-2 column-4 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B5" class="game-cell row-2 column-5 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B6" class="game-cell row-2 column-6 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B7" class="game-cell row-2 column-7 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B8" class="game-cell row-2 column-8 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="B9" class="game-cell row-2 column-9 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="C1" class="game-cell row-3 column-1 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C2" class="game-cell row-3 column-2 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C3" class="game-cell row-3 column-3 square-1">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C4" class="game-cell row-3 column-4 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C5" class="game-cell row-3 column-5 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C6" class="game-cell row-3 column-6 square-2">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C7" class="game-cell row-3 column-7 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C8" class="game-cell row-3 column-8 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="C9" class="game-cell row-3 column-9 square-3">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="D1" class="game-cell row-4 column-1 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D2" class="game-cell row-4 column-2 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D3" class="game-cell row-4 column-3 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D4" class="game-cell row-4 column-4 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D5" class="game-cell row-4 column-5 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D6" class="game-cell row-4 column-6 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D7" class="game-cell row-4 column-7 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D8" class="game-cell row-4 column-8 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="D9" class="game-cell row-4 column-9 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="E1" class="game-cell row-5 column-1 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E2" class="game-cell row-5 column-2 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E3" class="game-cell row-5 column-3 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E4" class="game-cell row-5 column-4 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E5" class="game-cell row-5 column-5 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E6" class="game-cell row-5 column-6 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E7" class="game-cell row-5 column-7 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E8" class="game-cell row-5 column-8 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="E9" class="game-cell row-5 column-9 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="F1" class="game-cell row-6 column-1 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F2" class="game-cell row-6 column-2 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F3" class="game-cell row-6 column-3 square-4">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F4" class="game-cell row-6 column-4 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F5" class="game-cell row-6 column-5 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F6" class="game-cell row-6 column-6 square-5">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F7" class="game-cell row-6 column-7 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F8" class="game-cell row-6 column-8 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="F9" class="game-cell row-6 column-9 square-6">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="G1" class="game-cell row-7 column-1 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G2" class="game-cell row-7 column-2 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G3" class="game-cell row-7 column-3 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G4" class="game-cell row-7 column-4 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G5" class="game-cell row-7 column-5 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G6" class="game-cell row-7 column-6 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G7" class="game-cell row-7 column-7 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G8" class="game-cell row-7 column-8 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="G9" class="game-cell row-7 column-9 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="H1" class="game-cell row-8 column-1 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H2" class="game-cell row-8 column-2 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H3" class="game-cell row-8 column-3 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H4" class="game-cell row-8 column-4 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H5" class="game-cell row-8 column-5 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H6" class="game-cell row-8 column-6 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H7" class="game-cell row-8 column-7 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H8" class="game-cell row-8 column-8 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="H9" class="game-cell row-8 column-9 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                            </tr>
+                            <tr class="table-row">
+                                <td id="I1" class="game-cell row-9 column-1 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I2" class="game-cell row-9 column-2 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I3" class="game-cell row-9 column-3 square-7">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I4" class="game-cell row-9 column-4 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I5" class="game-cell row-9 column-5 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I6" class="game-cell row-9 column-6 square-8">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I7" class="game-cell row-9 column-7 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I8" class="game-cell row-9 column-8 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                <td id="I9" class="game-cell row-9 column-9 square-9">
+                                    <div class="cell-value"></div>
+                                </td>
+                                
+                            </tr>                                      
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <br>
+                <div class="input-pad">
+                    <table class="pad-table">
+                        <tbody>
+                            <tr class="only-row">
+                                <td class="item 1">
+                                    <button class="item-btn 1" type="button">1</button>
+                                </td>
+                                <td class="item 2">
+                                    <button class="item-btn 2" type="button">2</button>
+                                </td>
+                                <td class="item 3">
+                                    <button class="item-btn 3" type="button">3</button>
+                                </td>
+                                <td class="item 4">
+                                    <button class="item-btn 4" type="button">4</button>
+                                </td>
+                                <td class="item 5">
+                                    <button class="item-btn 5" type="button">5</button>
+                                </td>
+                                <td class="item 6">
+                                    <button class="item-btn 6" type="button">6</button>
+                                </td>
+                                <td class="item 7">
+                                    <button class="item-btn 7" type="button">7</button>
+                                </td>
+                                <td class="item 8">
+                                    <button class="item-btn 8" type="button">8</button>
+                                </td>
+                                <td class="item 9">
+                                    <button class="item-btn 9" type="button">9</button>
+                                </td>
+                                <td class="item cls">
+                                    <button class="item-btn cls" type="button">
+                                        <svg class="bin" width="22" height="22" viewBox="0 0 1792 1792" 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        fill="currentColor">
+                                            <path d="M704 736v576q0 14-9 23t-23 9h-64q-14 0-23-9t-9-23v-576q0-14 9-23t23-9h64q14 0 23 9t9 23zm256 0v576q0 14-9 23t-23 9h-64q-14 0-23-9t-9-23v-576q0-14 9-23t23-9h64q14 0 23 9t9 23zm256 0v576q0 14-9 23t-23 9h-64q-14 0-23-9t-9-23v-576q0-14 9-23t23-9h64q14 0 23 9t9 23zm128 724v-948h-896v948q0 22 7 40.5t14.5 27 10.5 8.5h832q3 0 10.5-8.5t14.5-27 7-40.5zm-672-1076h448l-48-117q-7-9-17-11h-317q-10 2-17 11zm928 32v64q0 14-9 23t-23 9h-96v948q0 83-47 143.5t-113 60.5h-832q-66 0-113-58.5t-47-141.5v-952h-96q-14 0-23-9t-9-23v-64q0-14 9-23t23-9h309l70-167q15-37 54-63t79-26h320q40 0 79 26t54 63l70 167h309q14 0 23 9t9 23z"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>            
+                </div>
+                <div class="submit-cancel">
+                    <span id="submit" class="submit-cancel submit">Submit</span>
+                    <span id="cancel" class="submit-cancel cancel">Clear All</span>
+                </div>
+            </div>
+            <script type="text/javascript" src="sudoku.js"></script>
+            <script type="text/javascript" src="solver.js"></script>
+        </center>
+    </body>
+</html>
